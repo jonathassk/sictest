@@ -1,0 +1,22 @@
+version: "3.8"
+
+networks:
+  scitest-network:
+    driver: bridge
+
+services:
+
+  db:
+    container_name: scitest-db
+    command: [ "postgres", "-c", "log_statement=all" ]
+    image: postgres:11.6-alpine
+    volumes:
+      - ./database/scitest-database.sql:/docker-entrypoint-initdb.d/scitest-database.sql
+    environment:
+      - POSTGRES_DB=scitest
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_USER=postgres
+    networks:
+      - scitest-network
+    ports:
+      - 5432:5432

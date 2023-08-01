@@ -1,4 +1,30 @@
 package com.example.demo.domain;
 
-public class Votes {
+import com.example.demo.infrastructure.utils.VotesEnum;
+import jakarta.persistence.*;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.io.Serializable;
+
+@Entity
+@Getter
+@Setter
+@NoArgsConstructor
+public class Votes implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    private Long id;
+
+    @Column(name = "cpf")
+    private String cpf;
+
+    @Column(name = "vote")
+    private VotesEnum vote;
+
+    @ManyToOne
+    @JoinColumn(name = "poll_id")
+    private Polls poll;
 }

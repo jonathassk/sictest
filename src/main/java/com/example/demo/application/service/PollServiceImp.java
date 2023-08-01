@@ -2,7 +2,6 @@ package com.example.demo.application.service;
 
 import com.example.demo.application.repository.PollRepository;
 import com.example.demo.domain.Polls;
-import com.example.demo.infrastructure.exceptions.DateException;
 import com.example.demo.infrastructure.exceptions.PollNotFoundException;
 import com.example.demo.infrastructure.interfaces.PollService;
 import com.example.demo.infrastructure.utils.PollDate;
@@ -22,7 +21,7 @@ public class PollServiceImp implements PollService {
     @Override
     public Polls createPoll(int timeToEnd, String name) {
         if (timeToEnd < 1) {
-            throw new DateException("The time to close the poll provided needs to be greater than 0.");
+            timeToEnd = 1;
         }
         Polls poll = new Polls();
         poll.setName(name);

@@ -11,7 +11,7 @@ public enum VotesEnum {
         this.vote = vote;
     }
 
-    public String getVoto() {
+    public String getVote() {
         return vote;
     }
 }

@@ -29,7 +29,7 @@ public class Polls implements Serializable {
     @Column(name = "no_quantity")
     private int noQuantity = 0;
 
-    @OneToMany(mappedBy = "poll")
+    @OneToMany(mappedBy = "poll", fetch = FetchType.LAZY, cascade = {CascadeType.PERSIST})
     private List<Votes> votes = new ArrayList<>();
 
 }

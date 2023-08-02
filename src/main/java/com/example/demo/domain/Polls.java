@@ -7,6 +7,8 @@ import lombok.Setter;
 
 import java.io.Serializable;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -15,17 +17,19 @@ import java.time.LocalDateTime;
 public class Polls implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "ID")
+    @Column(name = "id")
     private Long id;
 
-    @Column(name = "NAME")
+    @Column(name = "name")
     private String name;
-    @Column(name = "END_TIME")
+    @Column(name = "end_time")
     private LocalDateTime endTime;
-    @Column(name = "YES_QUANTITY")
+    @Column(name = "yes_quantity")
     private int yesQuantity = 0;
-    @Column(name = "NO_QUANTITY")
+    @Column(name = "no_quantity")
     private int noQuantity = 0;
 
+    @OneToMany(mappedBy = "poll")
+    private List<Votes> votes = new ArrayList<>();
 
 }

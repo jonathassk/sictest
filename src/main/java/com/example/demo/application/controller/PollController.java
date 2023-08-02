@@ -34,9 +34,9 @@ public class PollController {
 
     @Transactional
     @PostMapping("/create")
-    public ResponseEntity<String> createPoll(@RequestBody PollRequest request) {
+    public ResponseEntity<Polls> createPoll(@RequestBody PollRequest request) {
         logger.info("[CREATE POLL] creating pool name: " + request.getName());
-        pollService.createPoll(request.getTimeToEnd(), request.getName());
-        return ResponseEntity.status(201).body("poll number created!");
+        Polls result = pollService.createPoll(request.getTimeToEnd(), request.getName());
+        return ResponseEntity.status(201).body(result);
     }
 }

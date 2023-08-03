@@ -13,3 +13,13 @@ Foi feito testes unitarios em garnde parte dos services, tambem por conta do tem
 
 <img width="623" alt="image" src="https://github.com/jonathassk/sictest/assets/35012537/4d1c7736-0eb0-4bd7-9f85-0591941c7d5f">
 
+### Teste de Performance
+
+<img width="1239" alt="image" src="https://github.com/jonathassk/sictest/assets/35012537/84348147-1738-4267-b3f9-1579c22b2213">
+resultados finais de media/mediana/percentil na consulta de enquetes
+
+## versionamento
+### Como voce versionaria sua aplicação?
+Em um projeto real, eu faria o versionamento dele em uma plataforma como github ou gitlab, utilizando a convenção de termos MAJOR, MINOR E PATCH. Onde a alteracao do major, seria feita para quando fosse para grande mudancas, fazendo sim ser considerada uma nova versao, os minors seriam para pequenas alteracões ou pequenos acrescimos de funções e os patchs serao correcao de bugs, deixando os valores nas tags como 1.0.0 apos o deploy.
+Mas antes de oficialmente publicar em prod, para fazer a transicao entre os ambientes, teria o ambiente de dev, homol e main, alem do release-candidate para ser enviado antes de ser mandado para produção, onde nesses ambientes seriam feitos os testes de desempenho, funcionamento no ambiente real, homologacao, e2e etc...
+

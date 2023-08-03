@@ -1,6 +1,7 @@
 package com.example.demo.domain;
 
 import com.example.demo.infrastructure.utils.VotesEnum;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -24,7 +25,8 @@ public class Votes implements Serializable {
     @Column(name = "vote")
     private VotesEnum vote;
 
-    @ManyToOne
-    @JoinColumn(name = "poll_id")
+    @ManyToOne(optional = true)
+    @JoinColumn(name = "poll_id", referencedColumnName = "id", nullable = true)
+    @JsonBackReference
     private Polls poll;
 }

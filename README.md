@@ -11,4 +11,5 @@ Diferente do que foi pedido no projeto, acabei por utilizar a requisição de um
 ### Testes unitarios
 Foi feito testes unitarios em garnde parte dos services, tambem por conta do tempo, acabei focando nos testes de "cenario feliz", mas mesmo assim, a media de cobertura foi acima de 85% em ambos services.
 
-###
+<img width="623" alt="image" src="https://github.com/jonathassk/sictest/assets/35012537/4d1c7736-0eb0-4bd7-9f85-0591941c7d5f">
+

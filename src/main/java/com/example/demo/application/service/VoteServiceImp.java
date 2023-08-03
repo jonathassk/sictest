@@ -34,6 +34,7 @@ public class VoteServiceImp implements VoteService {
     public Polls addVote(String vote, String cpf, Long pollId) {
         Optional<Polls> poll = pollRepository.findById(pollId);
         if (poll.isEmpty()) throw new PollNotFoundException("poll not found, id: " + pollId);
+        if (verifyIfCpfHasVoted(poll.get(), cpf)) throw new IllegalArgumentException("This cpf has voted!, cpf n:" + cpf.substring(0,5));
         logger.info("[VOTING] poll found, begin voting process");
 
         Votes voteResult = setVoteData(cpf, vote);
@@ -78,5 +79,12 @@ public class VoteServiceImp implements VoteService {
         CpfClient validCpfClient = CpfValidateClientConfig.verifyCpf("https://api.nfse.io/validate/NaturalPeople/taxNumber/");
         CpfVerifyDataClass validCpf = validCpfClient.validateCpf(cpf);
         return validCpf.isValid();
+    }
+
+    private Boolean verifyIfCpfHasVoted (Polls poll, String cpf) {
+        if (voteRepository.countVotesByPollAndCpf(poll, cpf) == 0) {
+            return false;
+        };
+        return true;
     }
 }
